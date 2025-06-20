@@ -1,0 +1,37 @@
+uuid: menu_mixins_item
+handle: Menu\Mixins\Item
+type: mixin
+name: Menu item
+
+fields:
+    id:
+        hidden: true
+    title:
+        placeholder: Title
+    slug:
+        hidden: true
+        column: false
+        scope: false
+    fullslug:
+        hidden: true
+        column: false
+        scope: false
+    url:
+        type: pagefinder
+        label: Url
+        singleMode: true
+        column: invisible
+    external:
+        label: External link
+        type: switch
+        default: 0
+        span: auto
+        scope: false
+    _css_fix:
+        label: CSS Fix
+        comment: Hide Parent, Slug, Schedule and Expiry fields
+        type: partial
+        path: ~/app/blueprints/main/menu/partials/css_fix.htm
+        column: false
+        cssClass: hidden
+    

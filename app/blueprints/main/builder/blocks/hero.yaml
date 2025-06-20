@@ -1,0 +1,57 @@
+uuid: builder_blocks_hero
+handle: Builder\Blocks\Hero
+type: mixin
+name: Hero
+fields:
+    headline:
+        tab: Content
+        label: Headline
+        type: text
+        span: full
+    text:
+        tab: Content
+        label: Text
+        type: richeditor
+        span: full
+    container_style:
+        tab: Content
+        label: Container style
+        type: dropdown
+        span: auto
+        options:
+            narrow: Narrow
+            normal: Normal
+            fluid: Fluid
+            none: None (full width)
+    headline_and_text_position:
+        tab: Content
+        label: Headline and text position
+        type: dropdown
+        span: auto
+        options:
+            "top-left": Top Left
+            "top-center": Top Center
+            "top-right": Top Right
+            "middle-left": Middle Left
+            "middle-center": Middle Center
+            "middle-right": Middle Right
+            "bottom-left": Bottom Left
+            "bottom-center": Bottom Center
+            "bottom-right": Bottom Right
+    bg_image:
+        tab: Content
+        label: Background image
+        comment: Best size 1920x500px
+        type: fileupload
+        mode: image
+        maxFiles: 1
+    block_name:
+        label: Name
+        tab: Block properties
+        commentAbove: "Block name for organization purposes"
+        type: text
+        span: auto
+        default: Hero
+    advanced_content:
+        type: mixin
+        source: Builder\Mixins\BlockAdvanced

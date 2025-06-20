@@ -1,0 +1,41 @@
+url = "/:slug"
+layout = "default"
+title = "Blog post"
+
+[section post]
+handle = "Blog\Post"
+identifier = "slug"
+isDefault = 1
+==
+{% if post is empty %} {% do abort('404') %} {% endif %}
+
+{% put meta %}
+{% partial "layout/meta/meta" data = {
+	title: post.meta_title ?: post.title,
+	description: post.meta_description ?: post.title,
+	keywords: post.meta_keywords ?: post.title,
+	og_image_1200_630: post.og_image ?: "",
+	og_image_1200_1200: post.og_image ?: ""
+} %}
+{% endput %}
+
+{% set breadcrumbs = [
+	{'name':"Blog"|_, 'url':"site/blog"|page()},
+	{'name':post.categories.first.title, 'url':"site/blog-category"|page({slug:post.categories.first.slug})},
+	{'name':post.title, 'url':""}
+] %}
+
+{% partial "blocks/page-header/page-header" data = {
+	cssClasses: "",
+	heading: post.title|_
+} %}
+
+<div class="pb-8 xl:pb-16">
+	<div class="container">
+		{% partial 'blocks/breadcrumbs/breadcrumbs' data = {
+			cssClasses: "my-6",
+			breadcrumbs: breadcrumbs
+		} %}
+	</div>
+	{% partial "layout/builder/builder" builder=post %}
+</div>

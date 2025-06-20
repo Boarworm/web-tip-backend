@@ -1,0 +1,6 @@
+<div data-block="{{ (_self|split('/')|last|split('.')|first) }}" class="{{ data.cssClasses }}">
+	<picture>
+		<source srcset="{{ data.src|resize(data.resize.width, data.resize.height, {mode:data.resize.mode|default('crop'),'extension':'webp'}) }}" type="image/webp">
+		<img class="max-h-full {{ data.imgCssClasses }}" src="{{ data.src|resize(data.resize.width, data.resize.height, {mode:data.resize.mode|default('crop'), quality:data.resize.quality|default(80)}) }}" {% for key, value in data.attributes %}{{ value ? "#{key}=\"#{value}\" "|raw }}{% endfor %}>
+	</picture>
+</div>

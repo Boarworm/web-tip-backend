@@ -1,0 +1,23 @@
+<div data-block="{{ (_self|split('/')|last|split('.')|first) }}" class="grid grid-cols-2 gap-2 xs:grid-cols-4 lg:grid-cols-6 {{ data.cssClasses }}">
+	{% set fancyboxGalleryId = random() %}
+	{% for item in data.images %}
+		<a href="{{ item.path }}" data-fancybox="{{ fancyboxGalleryId }}" data-caption="{{ item.description ?: "" }}" class="overflow-hidden group {{ loop.index > 12 ? "hidden" }}">
+			{% partial "blocks/image/image" data = {
+				cssClasses:"w-full h-full transition group-hover:opacity-80",
+				imgCssClasses:"w-full h-full object-cover",
+				src:item|media,
+				resize:{
+					width:"400",
+					height:"400",
+					mode:"crop",
+					extension:"",
+					quality:""
+				},
+				attributes:{
+					title: item.title ?: "Photo "~(loop.index),
+					alt: item.description ?: "Photo "~(loop.index)
+				}
+			} %}
+		</a>
+	{% endfor %}
+</div>

@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6{
+        @apply font-secondary font-light leading-tight text-neutral-darker mt-0 mb-4
+    }
+    .prose h1 {
+        @apply text-h1 lg:text-h1-lg xl:text-h1-xl
+    }
+
+    .prose h2 {
+        @apply text-h2 lg:text-h2-lg xl:text-h2-xl
+    }
+
+    .prose h3 {
+        @apply text-h3 lg:text-h3-lg xl:text-h3-xl text-primary-dark
+    }
+
+    .prose h4 {
+        @apply text-h4 lg:text-h4-lg xl:text-h4-xl text-primary
+    }
+
+    .prose h5 {
+        @apply text-h5 lg:text-h5-lg xl:text-h5-xl
+    }
+
+    .prose h6 {
+        @apply text-h5 lg:text-h6-lg xl:text-h6-xl
+    }
+}
+
+.container {
+    @apply w-full max-w-[1440px] mx-auto px-4 xl:px-12
+}
+
+.container-narrow {
+    @apply w-full max-w-[1160px] mx-auto px-4 xl:px-12
+}
+
+.container-half{
+    @apply w-full max-w-[720px] mx-auto px-4 xl:px-12
+}
+
+/* Magic forms */
+.form-flash button{display: none;}
+
+/* Fancybox */
+.fancybox-container {
+    z-index: 99 !important;
+}
+
+.fancybox__content {
+    padding: 0 !important;
+}
+
+.is-compact .fancybox__content > .f-button.is-close-btn,
+.fancybox__content > .f-button.is-close-btn {
+    background: none !important;
+    top: 10px !important;
+    right: 10px !important;
+}
+
+.fancybox-image {
+    min-width: 325px !important;;
+    min-height: 325px !important;
+}
+
+.fancybox__slide {
+    backface-visibility: initial !important;
+}

@@ -1,0 +1,46 @@
+uuid: builder_blocks_hero_2
+handle: Builder\Blocks\Hero2
+type: mixin
+name: Hero 2
+fields:
+    headline:
+        tab: Content
+        label: Headline
+        type: text
+        span: auto
+    container_style:
+        tab: Content
+        label: Container style
+        type: dropdown
+        span: auto
+        options:
+            narrow: Narrow
+            normal: Normal
+            fluid: Fluid
+            none: None (full width)
+    bg_image:
+        tab: Content
+        label: Background image
+        comment: Best size 1920x500px
+        type: fileupload
+        mode: image
+        maxFiles: 1
+        span: auto
+    image:
+        tab: Content
+        label: Image
+        comment: Best size 300x250px
+        type: fileupload
+        mode: image
+        maxFiles: 1
+        span: auto
+    block_name:
+        label: Name
+        tab: Block properties
+        commentAbove: "Block name for organization purposes"
+        type: text
+        span: auto
+        default: Hero 2
+    advanced_content:
+        type: mixin
+        source: Builder\Mixins\BlockAdvanced

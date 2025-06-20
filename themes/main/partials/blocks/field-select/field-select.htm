@@ -1,0 +1,92 @@
+{% set variants = {
+	"default": {
+		"baseBlockClasses": "relative",
+		"baseLabelClasses": "inline-block mb-1",
+		"baseSelectClasses": "block appearance-none leading-normal pr-6 w-full cursor-pointer border transition focus:ring-1 focus:ring-opacity-40 focus:outline-none disabled:bg-slate-200 disabled:cursor-not-allowed disabled:opacity-70",
+		"baseBodyClasses": "flex items-center relative bg-white",
+		"baseArrowClasses": "absolute right-2 z-10 w-2 h-2",
+		"baseValidationClasses": "text-sm mt-1 text-white visible empty:hidden bg-red-500 p-1",
+		"colors": {
+			"dark": {
+				"colorSelectClasses": "text-neutral-darker bg-gray-200 border-gray-200 focus:border-primary/40 focus:ring-primary"
+			},
+			"light": {
+				"colorSelectClasses": "text-neutral-darker bg-white border-gray-200 focus:border-primary/40 focus:ring-primary"
+			}
+		},
+		"sizes": {
+			"xs": {
+				"sizeSelectClasses": "text-xs py-2 pl-2 pr-3"
+			},
+			"sm": {
+				"sizeSelectClasses": "text-sm py-2 pl-2 pr-3"
+			},
+			"md": {
+				"sizeSelectClasses": "text-normal py-2 pl-2 pr-3"
+			},
+			"lg": {
+				"sizeSelectClasses": "text-lg py-2 pl-2 pr-3"
+			},
+			"xl": {
+				"sizeSelectClasses": "text-xl py-2 pl-2 pr-3"
+			}
+		}
+	}
+} %}
+
+{% set blockClasses = [
+	data.cssClasses,
+	variants[data.variant|default("default")].baseBlockClasses,
+	variants[data.variant|default("default")].colors[data.color|default("light")].colorBlockClasses,
+	variants[data.variant|default("default")].sizes[data.size|default("md")].sizeBlockClasses,
+]|join(" ") %}
+
+{% set labelClasses = [
+	variants[data.variant|default("default")].baseLabelClasses,
+	variants[data.variant|default("default")].colors[data.color|default("light")].colorLabelClasses,
+	variants[data.variant|default("default")].sizes[data.size|default("md")].sizeLabelClasses,
+]|join(" ") %}
+
+{% set selectClasses = [
+	variants[data.variant|default("default")].baseSelectClasses,
+	variants[data.variant|default("default")].colors[data.color|default("light")].colorSelectClasses,
+	variants[data.variant|default("default")].sizes[data.size|default("md")].sizeSelectClasses,
+]|join(" ") %}
+
+{% set bodyClasses = [
+	variants[data.variant|default("default")].baseBodyClasses,
+	variants[data.variant|default("default")].colors[data.color|default("light")].colorBodyClasses,
+	variants[data.variant|default("default")].sizes[data.size|default("md")].sizeBodyClasses,
+]|join(" ") %}
+
+{% set arrowClasses = [
+	variants[data.variant|default("default")].baseArrowClasses,
+	variants[data.variant|default("default")].colors[data.color|default("light")].colorArrowClasses,
+	variants[data.variant|default("default")].sizes[data.size|default("md")].sizeArrowClasses,
+]|join(" ") %}
+
+{% set validationClasses = [
+	variants[data.variant|default("default")].baseValidationClasses,
+	variants[data.variant|default("default")].colors[data.color|default("light")].colorValidationClasses,
+	variants[data.variant|default("default")].sizes[data.size|default("md")].sizeValidationClasses,
+]|join(" ") %}
+
+<div data-block="{{ (_self|split('/')|last|split('.')|first) }}" class="{{ blockClasses }}" {% for key, value in data.attributes %}{{ value ? "#{key}=\"#{value}\""|join(" ")|raw }}{% endfor %}>
+	{% if data.label %}
+		<label for="{{ data.inputAttributes.id }}" class="{{ labelClasses }}">{{ data.label }}</label>
+	{% endif %}
+	<div class="{{ bodyClasses }}">
+		<select {% for key, value in data.inputAttributes %}{{ value ? "#{key}=\"#{value}\""|join(" ")|raw }}{% endfor %} class="{{ selectClasses }}">
+			{% if data.emptyOption %}
+				<option value="{{ data.emptyOption|keys|first }}" {% if data.defaultValue == data.emptyOption|keys|first %} selected="selected" {% endif %}>{{ data.emptyOption|first }}</option>
+			{% endif %}
+			{% for value, name in data.options %}
+				<option value="{{ value }}" {% if data.defaultValue == value %} selected="selected" {% endif %}>{{ name }}</option>
+			{% endfor %}
+		</select>
+		<svg xmlns="http://www.w3.org/2000/svg" class="{{ arrowClasses }}" viewBox="0 0 135.467 67.733">
+			<path d="M67.733 55.033 12.7 0H0l67.733 67.733L135.467 0h-12.7z"/>
+		</svg>
+	</div>
+	<div class="{{ validationClasses }}" data-validate-for="{{ data.inputAttributes.name }}"></div>
+</div>

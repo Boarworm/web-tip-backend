@@ -1,0 +1,36 @@
+{% set index = 1 %}
+<ol data-block="{{ (_self|split('/')|last|split('.')|first) }}" class="flex items-center overflow-y-hidden overflow-x-auto p-0 list-none {{ data.cssClasses }}" itemscope="" itemtype="https://schema.org/BreadcrumbList">
+	<li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="">
+		<a href="/" itemprop="item" class="flex items-center font-light text-sm no-underline transition text-neutral-darker hover:text-secondary">
+			<div itemprop="name" class="">{{ "Home"|_ }}</div>
+		</a>
+		<meta itemprop="position" content="{{ index }}">
+	</li>
+	<li class="px-2">
+		{% partial "blocks/svg-icon/svg-icon" data = {
+			cssClasses: "w-3 h-3 fill-neutral",
+			name: "chevron-right"
+		} %}
+	</li>
+	{% for breadcrumb in data.breadcrumbs %}
+		<li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="">
+			{% if loop.last %}
+				<div class="whitespace-nowrap text-neutral-darker font-light text-sm" itemprop="name">{{ breadcrumb.name }}</div>
+			{% else %}
+				<a class="text-neutral-darker font-light text-sm whitespace-nowrap no-underline transition hover:text-secondary" href="{{ breadcrumb.url }}" itemprop="item">
+					<div class="" itemprop="name">{{ breadcrumb.name }}</div>
+				</a>
+			{% endif %}
+			<meta itemprop="position" content="{{ index }}">
+		</li>
+		{% if not loop.last %}
+			<li class="px-2">
+				{% partial "blocks/svg-icon/svg-icon" data = {
+					cssClasses: "w-3 h-3 fill-neutral",
+					name: "chevron-right"
+				} %}
+			</li>
+		{% endif %}
+		{% set index = loop.index + 1 %}
+	{% endfor %}
+</ol>

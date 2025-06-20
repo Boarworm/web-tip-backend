@@ -1,0 +1,162 @@
+uuid: builder_containers
+handle: Builder\Container
+type: mixin
+name: Container
+fields:
+    blocks:
+        tab: Blocks
+        label: false
+        type: repeater
+        span: full
+        displayMode: builder
+        itemsExpanded: true
+        prompt: Add Block
+        titleFrom: block_name
+        groups:
+            codeeditor:
+                name: Code
+                icon: ph ph-code
+                useTabs: true
+                fields:
+                    _codeeditor:
+                        type: mixin
+                        source: Builder\Blocks\Codeeditor
+            codehighlighter:
+                name: Code Highlighter
+                icon: ph ph-code
+                useTabs: true
+                fields:
+                    _codehighlighter:
+                        type: mixin
+                        source: Builder\Blocks\Codehighlighter
+            richeditor:
+                name: Text
+                icon: ph ph-text-align-center
+                useTabs: true
+                fields:
+                    _richeditor:
+                        type: mixin
+                        source: Builder\Blocks\Richeditor
+            image:
+                name: Image
+                icon: ph ph-image-square
+                useTabs: true
+                fields:
+                    _image:
+                        type: mixin
+                        source: Builder\Blocks\Image
+            headline:
+                name: Headline
+                icon: ph ph-text-h
+                useTabs: true
+                fields:
+                    _headline:
+                        type: mixin
+                        source: Builder\Blocks\Headline
+            hero:
+                name: Hero
+                icon: ph ph-image
+                useTabs: true
+                fields:
+                    _hero:
+                        type: mixin
+                        source: Builder\Blocks\Hero
+            hero_2:
+                name: Hero 2
+                icon: ph ph-image
+                useTabs: true
+                fields:
+                    _hero_2:
+                        type: mixin
+                        source: Builder\Blocks\Hero2
+            content_image_text:
+                name: Image and text
+                icon: ph ph-text-columns
+                useTabs: true
+                fields:
+                    _content_image_text:
+                        type: mixin
+                        source: Builder\Blocks\ContentImageText
+            content_image_text_2:
+                name: Image and text 2
+                icon: ph ph-text-columns
+                useTabs: true
+                fields:
+                    _content_image_text_2:
+                        type: mixin
+                        source: Builder\Blocks\ContentImageText2
+            content_image_text_4:
+                name: Image and text 3
+                icon: ph ph-text-columns
+                useTabs: true
+                fields:
+                    _content_image_text_4:
+                        type: mixin
+                        source: Builder\Blocks\ContentImageText4
+            content_text_info_card:
+                name: Text and info card
+                icon: ph ph-text-columns
+                useTabs: true
+                fields:
+                    _content_text_info_card:
+                        type: mixin
+                        source: Builder\Blocks\ContentTextInfoCard
+            content_text_2_columns:
+                name: Text 2 columns
+                icon: ph ph-text-columns
+                useTabs: true
+                fields:
+                    _content_text_2_columns:
+                        type: mixin
+                        source: Builder\Blocks\ContentText2Columns
+            content_form_image:
+                name: Form with image
+                icon: icon-pencil-square-o
+                useTabs: true
+                fields:
+                    _content_form_image:
+                        type: mixin
+                        source: Builder\Blocks\ContentFormImage
+            card_info:
+                name: Info card
+                icon: ph ph-cards
+                useTabs: true
+                fields:
+                    _card_info:
+                        type: mixin
+                        source: Builder\Blocks\CardInfo
+            card_info_2:
+                name: Info card 2
+                icon: ph ph-cards
+                useTabs: true
+                fields:
+                    _card_info_2:
+                        type: mixin
+                        source: Builder\Blocks\CardInfo2
+            list_posts_latest:
+                name: Latest posts
+                icon: ph ph-article
+                useTabs: true
+                fields:
+                    _list_posts_latest:
+                        type: mixin
+                        source: Builder\Blocks\ListPostsLatest
+            gallery_grid:
+                name: Gallery grid
+                icon: ph ph-images
+                useTabs: true
+                fields:
+                    _gallery_grid:
+                        type: mixin
+                        source: Builder\Blocks\GalleryGrid
+            breadcrumbs:
+                name: Breadcrumbs
+                icon: ph ph-fast-forward
+                useTabs: true
+                fields:
+                    _breadcrumbs:
+                        type: mixin
+                        source: Builder\Blocks\Breadcrumbs
+    advanced_content:
+        type: mixin
+        source: Builder\Mixins\ContainerAdvanced

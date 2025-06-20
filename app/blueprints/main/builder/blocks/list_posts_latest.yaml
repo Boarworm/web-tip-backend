@@ -1,0 +1,20 @@
+uuid: builder_blocks_list_posts_latest
+handle: Builder\Blocks\ListPostsLatest
+type: mixin
+name: Latest posts
+fields:
+    _hint:
+        tab: Content
+        label: Display list of latest posts
+        type: hint
+        span: full
+    block_name:
+        label: Name
+        tab: Block properties
+        commentAbove: "Block name for organization purposes"
+        type: text
+        span: auto
+        default: Latest posts
+    advanced_content:
+        type: mixin
+        source: Builder\Mixins\BlockAdvanced

@@ -1,0 +1,19 @@
+<title>{{ data.title }}</title>
+<meta name="description" content="{{ data.description }}">
+<meta name="keywords" content="{{ data.keywords|lower }}">
+<meta property="og:url" content="{{ url_current() }}"/>
+<meta property="og:title" content="{{ data.title }}"/>
+<meta property="og:description" content="{{ data.description }}"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="{{ siteConfig.site_name }}"/>
+<meta property="og:updated_time" content="{{ 'now'|date('U') }}">
+<meta property="og:image" content="{{ data.og_image_1200_630|default('assets/images/og-image.jpg'|theme)|resize(1200, 630, {mode: 'crop'}) }}"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="{{ data.title }}"/>
+<meta property="og:image" content="{{ data.og_image_1200_1200|default('assets/images/og-image.jpg'|theme)|resize(1200, 1200, {mode: 'crop'}) }}"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="1200"/>
+<meta property="og:image:alt" content="{{ data.title }}"/>

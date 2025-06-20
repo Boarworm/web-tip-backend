@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwtt=self.webpackChunkwtt||[]).push([[762],{3880:(t,i,s)=>{function o(t){window.showLoader=function(){t.classList.remove("transition-opacity","duration-1000","opacity-0"),t.classList.add("opacity-100","!z-20")},window.hideLoader=function(){t.classList.add("transition-opacity","duration-1000","opacity-0"),t.classList.remove("opacity-100"),setTimeout((function(){t.classList.remove("!z-20")}),1e3)}}s.r(i),s.d(i,{default:()=>o})}}]);
+//# sourceMappingURL=loader.js.map

@@ -1,0 +1,43 @@
+uuid: builder_blocks_content_text_2_columns
+handle: Builder\Blocks\ContentText2Columns
+type: mixin
+name: Text 2 columns
+fields:
+    columns:
+        tab: Content
+        label: Columns width
+        type: dropdown
+        span: full
+        options:
+            1: 1/5
+            2: 2/5
+            3: 3/5
+            4: 4/5
+            5: 5/5
+            6: 5/1
+            7: 5/2
+            8: 5/3
+            9: 5/4
+            10: 5/5
+    text_1:
+        tab: Content
+        label: Text 1
+        type: richeditor
+        size: huge
+        span: auto
+    text_2:
+        tab: Content
+        label: Text 2
+        type: richeditor
+        size: huge
+        span: auto
+    block_name:
+        label: Name
+        tab: Block properties
+        commentAbove: "Block name for organization purposes"
+        type: text
+        span: auto
+        default: Text 2 columns
+    advanced_content:
+        type: mixin
+        source: Builder\Mixins\BlockAdvanced

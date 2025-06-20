@@ -1,0 +1,25 @@
+uuid: builder_blocks_card_info_2
+handle: Builder\Blocks\CardInfo2
+type: mixin
+name: Info card 2
+fields:
+    headline:
+        tab: Content
+        label: Headline
+        type: text
+        span: full
+    text:
+        tab: Content
+        label: Text
+        type: richeditor
+        span: full
+    block_name:
+        label: Name
+        tab: Block properties
+        commentAbove: "Block name for organization purposes"
+        type: text
+        span: auto
+        default: Info card 2
+    advanced_content:
+        type: mixin
+        source: Builder\Mixins\BlockAdvanced

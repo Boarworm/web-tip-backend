@@ -1,0 +1,42 @@
+url = "/blog/:slug/:page?|^[0-9]+$"
+layout = "default"
+title = "Blog category"
+is_hidden = 0
+
+[section category]
+handle = "Blog\Category"
+identifier = "slug"
+isDefault = 1
+==
+{% if category is empty %} {% do abort('404') %} {% endif %}
+
+{% put meta %}
+{% partial "layout/meta/meta" data = {
+	title: category.meta_title ?: category.title,
+	description: category.meta_description ?: category.title,
+	keywords: category.meta_keywords ?: category.title,
+	og_image_1200_630: category.og_image ?: "",
+	og_image_1200_1200: category.og_image ?: ""
+} %}
+{% endput %}
+
+{% set breadcrumbs = [
+	{'name':"Blog"|_, 'url':"site/blog"|page()},
+	{'name':category.title, 'url':""}
+] %}
+
+{% partial "blocks/page-header/page-header" data = {
+	cssClasses: "",
+	heading: category.title|_
+} %}
+
+<div class="container pb-8 xl:pb-16">
+	{% partial 'blocks/breadcrumbs/breadcrumbs' data = {
+		cssClasses: "my-6",
+		breadcrumbs: breadcrumbs
+	} %}
+	{% partial "blocks/list-posts/list-posts" data = {
+		cssClasses: "",
+		categorySlug: category.slug,
+	} %}
+</div>

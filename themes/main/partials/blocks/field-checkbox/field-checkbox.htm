@@ -1,0 +1,75 @@
+{% set variants = {
+	"default": {
+		"baseBlockClasses": "relative",
+		"baseLabelClasses": "cursor-pointer pl-2",
+		"baseInputWrapperClasses": "flex items-center",
+		"baseInputClasses": "w-4 h-4 text-blue-600 bg-gray-100 rounded cursor-pointer border-gray-300 focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40",
+		"baseValidationClasses": "text-sm mt-1 text-white visible empty:hidden bg-red-500 p-1",
+		"colors": {
+			"dark": {
+				"colorInputClasses": "text-neutral-darker bg-white border-gray-200 focus:border-primary/40 focus:ring-primary"
+			},
+			"light": {
+				"colorInputClasses": "text-neutral-darker bg-gray-200 border-gray-200 focus:border-primary/40 focus:ring-primary"
+			}
+		},
+		"sizes": {
+			"xs": {
+				"sizeInputClasses": "text-xs p-2"
+			},
+			"sm": {
+				"sizeInputClasses": "text-sm p-2"
+			},
+			"md": {
+				"sizeInputClasses": "text-normal p-2"
+			},
+			"lg": {
+				"sizeInputClasses": "text-lg p-2"
+			},
+			"xl": {
+				"sizeInputClasses": "text-xl p-2"
+			}
+		}
+	}
+} %}
+
+{% set blockClasses = [
+	data.cssClasses,
+	variants[data.variant|default("default")].baseBlockClasses,
+	variants[data.variant|default("default")].colors[data.color|default("light")].colorBlockClasses,
+	variants[data.variant|default("default")].sizes[data.size|default("md")].sizeBlockClasses,
+]|join(" ") %}
+
+{% set labelClasses = [
+	variants[data.variant|default("default")].baseLabelClasses,
+	variants[data.variant|default("default")].colors[data.color|default("light")].colorLabelClasses,
+	variants[data.variant|default("default")].sizes[data.size|default("md")].sizeLabelClasses,
+]|join(" ") %}
+
+{% set inputWrapperClasses = [
+	variants[data.variant|default("default")].baseInputWrapperClasses,
+	variants[data.variant|default("default")].colors[data.color|default("light")].colorInputWrapperClasses,
+	variants[data.variant|default("default")].sizes[data.size|default("md")].sizeInputWrapperClasses,
+]|join(" ") %}
+
+{% set inputClasses = [
+	variants[data.variant|default("default")].baseInputClasses,
+	variants[data.variant|default("default")].colors[data.color|default("light")].colorInputClasses,
+	variants[data.variant|default("default")].sizes[data.size|default("md")].sizeInputClasses,
+]|join(" ") %}
+
+{% set validationClasses = [
+	variants[data.variant|default("default")].baseValidationClasses,
+	variants[data.variant|default("default")].colors[data.color|default("light")].colorValidationClasses,
+	variants[data.variant|default("default")].sizes[data.size|default("md")].sizeValidationClasses,
+]|join(" ") %}
+
+<div data-block="{{ (_self|split('/')|last|split('.')|first) }}" class="{{ blockClasses }}" {% for key, value in data.attributes %}{{ value ? "#{key}=\"#{value}\""|join(" ")|raw }}{% endfor %}>
+	<div class="{{ inputWrapperClasses }}">
+		<input type="checkbox" {% for key, value in data.inputAttributes %}{{ value ? "#{key}=\"#{value}\""|join(" ")|raw }}{% endfor %} class="{{ inputClasses }}">
+		{% if data.label %}
+			<label for="{{ data.inputAttributes.id }}" class="{{ labelClasses }}">{{ data.label|raw }}</label>
+		{% endif %}
+	</div>
+	<div data-validate-for="{{ data.inputAttributes.name }}" class="{{ validationClasses }}"></div>
+</div>

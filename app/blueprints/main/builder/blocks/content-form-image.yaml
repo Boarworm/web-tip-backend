@@ -1,0 +1,39 @@
+uuid: builder_blocks_content_form_image
+handle: Builder\Blocks\ContentFormImage
+type: mixin
+name: Form with image
+fields:
+    form:
+        tab: Content
+        label: Form
+        span: full
+        type: dropdown
+        options:
+            "form-club-card": Club Card
+            "form-gift-card": Gift Card
+            "form-travel-agents": Travel agents
+            "form-business": Business
+            "form-secure": Secure
+            "form-concierge-card": Concierge Card
+    text:
+        tab: Content
+        label: Text
+        type: richeditor
+        span: full
+    bg_image:
+        tab: Content
+        label: Image
+        comment: Best size 1920px width and variable height
+        type: fileupload
+        mode: image
+        maxFiles: 1
+    block_name:
+        label: Name
+        tab: Block properties
+        commentAbove: "Block name for organization purposes"
+        type: text
+        span: auto
+        default: Form with image
+    advanced_content:
+        type: mixin
+        source: Builder\Mixins\BlockAdvanced

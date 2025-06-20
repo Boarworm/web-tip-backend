@@ -1,0 +1,32 @@
+uuid: builder_blocks_content_image_text
+handle: Builder\Blocks\ContentImageText
+type: mixin
+name: Image and text
+fields:
+    headline:
+        tab: Content
+        label: Headline
+        type: text
+        span: full
+    text:
+        tab: Content
+        label: Text
+        type: richeditor
+        span: full
+    image:
+        tab: Content
+        label: Image
+        comment: Best size 500x500px
+        type: fileupload
+        mode: image
+        maxFiles: 1
+    block_name:
+        label: Name
+        tab: Block properties
+        commentAbove: "Block name for organization purposes"
+        type: text
+        span: auto
+        default: Image and text
+    advanced_content:
+        type: mixin
+        source: Builder\Mixins\BlockAdvanced

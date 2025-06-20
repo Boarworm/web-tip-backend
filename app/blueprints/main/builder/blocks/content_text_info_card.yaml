@@ -1,0 +1,48 @@
+uuid: builder_blocks_content_text_info_card
+handle: Builder\Blocks\ContentTextInfoCard
+type: mixin
+name: Text and info card
+fields:
+    columns:
+        tab: Content
+        label: Columns width
+        type: dropdown
+        span: full
+        options:
+            1: 1/5
+            2: 2/5
+            3: 3/5
+            4: 4/5
+            5: 5/5
+            6: 5/1
+            7: 5/2
+            8: 5/3
+            9: 5/4
+            10: 5/5
+    text:
+        tab: Content
+        label: Text
+        type: richeditor
+        size: huge
+        span: left
+    info_card_headline:
+        tab: Content
+        label: Info card headline
+        type: text
+        span: right
+    info_card_text:
+        tab: Content
+        label: Info card text
+        type: richeditor
+        size: huge
+        span: right
+    block_name:
+        label: Name
+        tab: Block properties
+        commentAbove: "Block name for organization purposes"
+        type: text
+        span: auto
+        default: Text and info card
+    advanced_content:
+        type: mixin
+        source: Builder\Mixins\BlockAdvanced

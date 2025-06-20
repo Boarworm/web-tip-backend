@@ -1,0 +1,50 @@
+title = "TEST PAGE"
+url = "/test"
+layout = "default"
+is_hidden = 1
+==
+<?php
+    function onStart(){
+        $this->post = \Rainlab\Blog\Models\Post::find(12);
+}
+?>
+==
+{% set breadcrumbs = [
+	{
+		'name':this.page.title,
+		'url':'',
+	}
+] %}
+{% put breadcrumbs %}
+{% partial 'breadcrumbs' pages=breadcrumbs %}
+{% endput %}
+
+{% partial "page-header/page-header" heading=this.page.title %}
+
+{% set post = this.page.post %}
+<div class="container py-12">
+	<div class="h2">fileupload image</div>
+	{% partial "image/image" class=""
+		src=post.featured_images|length ? post.featured_images.first : "assets/images/placeholder.png"|theme
+		resizeWidth=600 resizeHeight=402 resizeMode="crop" resizeExtension="" resizeQuality=""
+		attributes = {
+		'alt':post.title,
+		'title':post.title,
+	} %}
+	<div class="h2">Mediafinder image JPG</div>
+	{% partial "image/image" class=""
+		src=('test-image.jpg'|media|length ? 'test-image.jpg'|media : "assets/images/placeholder.png"|theme)
+		resizeWidth=600 resizeHeight=402 resizeMode="crop" resizeExtension="" resizeQuality=""
+		attributes = {
+		'alt':post.title,
+		'title':post.title,
+	} %}
+	<div class="h2">Mediafinder image PNG</div>
+	{% partial "image/image" class=""
+		src=('test-image.png'|media|length ? 'test-image.png'|media : "assets/images/placeholder.png"|theme)
+		resizeWidth=600 resizeHeight=402 resizeMode="crop" resizeExtension="" resizeQuality=""
+		attributes = {
+		'alt':post.title,
+		'title':post.title,
+	} %}
+</div>

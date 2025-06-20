@@ -1,0 +1,48 @@
+{% set variants = {
+	"default": {
+		"baseBlockClasses": 'inline-block text-center shadow-md transition focus:outline-none focus:ring',
+		"colors": {
+			'dark': {
+				"colorBlockClasses": 'text-white bg-neutral hover:bg-neutral/70'
+			},
+			'primary': {
+				"colorBlockClasses": 'text-white bg-primary hover:bg-primary/70'
+			},
+		},
+		"sizes": {
+			'md': {
+				"sizeBlockClasses": "text-base px-8 py-2"
+			}
+		}
+	},
+	"outline": {
+		"baseBlockClasses": 'inline-block text-center bg-transparent shadow-md outline outline-1 outline-offset-[-1px] transition focus:outline-none focus:ring',
+		"colors": {
+			'dark': {
+				"colorBlockClasses": 'text-neutral-darker outline-neutral hover:text-white hover:bg-neutral'
+			},
+			'light': {
+				"colorBlockClasses": 'text-white outline-white hover:text-neutral-darker hover:bg-white'
+			},
+			'primary': {
+				"colorBlockClasses": 'text-primary outline-primary hover:text-white hover:bg-primary'
+			}
+		},
+		"sizes": {
+			'md': {
+				"sizeBlockClasses": "text-base px-8 py-2"
+			}
+		}
+	}
+} %}
+
+{% set blockClasses = [
+	data.cssClasses,
+	variants[data.variant|default("default")].baseBlockClasses,
+	variants[data.variant|default("default")].colors[data.color|default("primary")].colorBlockClasses,
+	variants[data.variant|default("default")].sizes[data.size|default("md")].sizeBlockClasses,
+]|join(" ") %}
+
+<{{ data.tag|default('button') }} data-block="{{ (_self|split('/')|last|split('.')|first) }}" {% for key, value in data.attributes %}{{ value ? "#{key}=\"#{value}\""|join(" ")|raw }}{% endfor %} class="{{ blockClasses }}">
+{{ body ? body|raw : data.body|raw }}
+</{{ data.tag|default('button') }}>

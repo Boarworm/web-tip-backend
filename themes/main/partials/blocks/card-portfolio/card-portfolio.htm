@@ -1,0 +1,61 @@
+<div data-block="{{ (_self|split('/')|last|split('.')|first) }}" class="overflow-hidden w-[200px] h-[200px] rounded-lg shadow-lg perspective-1000 {{ data.cssClasses }}" {% for key, value in data.attributes %}{{ value ? "#{key}=\"#{value}\" "|raw }}{% endfor %}>
+	<div class="relative w-full h-full transition-transform duration-600 transform-style-preserve-3d shadow-md rotate-y-180">
+		<div class="absolute w-full h-full backface-hidden bg-gray-400 text-black">
+			FRONT <a href="{{ data.url }}" class="block overflow-hidden group">
+				{% partial "blocks/image/image" data = {
+					cssClasses: "w-full h-auto transition group-hover:scale-125",
+					imgCssClasses: "w-full "~data.image.imgCssClasses,
+					src: data.image.src,
+					resize: data.image.resize,
+					attributes: data.image.attributes
+				} %}
+				<img src="{{ "partials/blocks/card-post/wave.svg"|theme }}" alt="" class="w-full"> </a>
+		</div>
+		<div class="absolute w-full h-full backface-hidden bg-blue-700 text-white transform rotate-y-180">
+			BACK
+		</div>
+	</div>
+	{#    <div class="px-2 py-2 flex flex-col items-start flex-auto"> #}
+	{#        <a href="{{ data.url }}" class="text-lg font-light transition uppercase hover:text-secondary xl:text-xl">{{ data.title }}</a> #}
+	{#        {% if data.date %} #}
+	{#            <div class="italic font-light text-sm text-neutral-light mt-2 mb-2 xl:text-base">{{ data.date }}</div> #}
+	{#        {% endif %} #}
+	{#        {% if data.excerpt %} #}
+	{#            <div class="font-light mt-6 flex-auto"> #}
+	{#                {{ data.excerpt }} #}
+	{#            </div> #}
+	{#        {% endif %} #}
+	{#        <a href="{{ data.url }}" class="flex group font-light items-center text-sm text-neutral xl:text-base"> Read more #}
+	{#            {% partial "blocks/svg-icon/svg-icon" data = { #}
+	{#                cssClasses: "w-3 h-3 ml-2 transition-all fill-neutral group-hover:ml-4 group-hover:fill-secondary", #}
+	{#                name: "arrow-right" #}
+	{#            } %} #}
+	{#        </a> #}
+	{#    </div> #}
+</div>
+
+
+{# asdasd #}
+{# <div class="perspective-1000 cursor-pointer transition-all hover:scale-x-[-1] bg-red-200 w-[200px] h-[200px]"> #}
+{#    <div class="relative transform-style-3d transition-transform duration-700 transform text-white hover:rotate-y-180"> #}
+{#        <div class="backface-hidden absolute w-full h-full inset-0 rotate-y-0"> #}
+{#            front #}
+{#        </div> #}
+{#        <div class="backface-hidden absolute w-full h-full inset-0 rotate-y-180"> #}
+{#            back #}
+{#        </div> #}
+{#    </div> #}
+{# </div> #}
+
+<div class="flip-card w-72 h-72 bg-transparent perspective-1000 mx-auto">
+	<div class="flip-card-inner relative w-full h-full text-center transition-transform duration-600 transform-style-preserve-3d shadow-lg hover:transform hover:rotate-y-0">
+		<div class="flip-card-front absolute w-full h-full backface-hidden bg-gray-400 text-black">
+			<img src="img_avatar.png" alt="Avatar" class="w-full h-full">
+		</div>
+		<div class="flip-card-back absolute w-full h-full backface-hidden bg-blue-700 text-white transform rotate-y-180 flex flex-col items-center justify-center">
+			<h1 class="text-2xl font-bold">John Doe</h1>
+			<p>Architect & Engineer</p>
+			<p>We love that guy</p>
+		</div>
+	</div>
+</div>

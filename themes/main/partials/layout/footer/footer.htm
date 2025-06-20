@@ -1,0 +1,107 @@
+[collection menuFooter]
+handle = "Menu\Footer"
+==
+<img src="{{ "assets/images/wave.svg"|theme }}" alt="Wave">
+
+<footer data-layout="{{ (_self|split('/')|last|split('.')|first) }}" class="{{ data.cssClasses }}" {% for key, value in data.attributes %}{{ value ? "#{key}=\"#{value}\" "|raw }}{% endfor %}>
+	<div class="bg-primary-darkest">
+		<div class="container py-10 grid gap-10 grid-cols-1 md:grid-cols-3">
+			<div class="">
+				{% partial "blocks/logo/logo" data = {
+					cssClasses: "w-[36px] lg:w-[60px]"
+				} %}
+				<div class="prose mt-4 text-white">
+					<p>{{ siteConfig.footer_text }}</p>
+				</div>
+			</div>
+			<div class="">
+				<div class="text-xl uppercase font-italic font-secondary text-white mb-4 md:mb-8 md:text-3xl">{{ "Contact"|_ }}</div>
+				<div class="mb-4">
+					{% for item in siteConfig.addresses %}
+						<div class="flex items-center mb-2 last:mb-0">
+							{{ item.address|raw }}
+						</div>
+					{% endfor %}
+				</div>
+				<div class="mb-4">
+					{% for item in siteConfig.phones %}
+						<div class="flex items-center">
+							{% if loop.first %}
+								{% partial "blocks/svg-icon/svg-icon" data = {
+									cssClasses: "w-5 h-6 fill-white mr-3 shrink-0 self-start xl:mr-6",
+									name: "mobile"
+								} %}
+							{% endif %}
+							<a href="tel:+{{ item.phone|replace({'+':'','-':'',' ':'','(':'',')':''}) }}" class="transition text-white hover:text-secondary truncate {{ not loop.first ? "mt-1 ml-8 xl:ml-11" }}">{{ item.phone }}</a>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="">
+					{% for item in siteConfig.emails %}
+						<div class="flex items-center">
+							{% if loop.first %}
+								{% partial "blocks/svg-icon/svg-icon" data = {
+									cssClasses: "w-5 h-5 fill-white mr-3 mt-0.5 shrink-0 self-start xl:mr-6",
+									name: "email"
+								} %}
+							{% endif %}
+							<a href="mailto:{{ item.email }}" class="transition text-white hover:text-secondary truncate {{ not loop.first ? "mt-1 ml-8 xl:ml-11" }}">{{ item.email }}</a>
+						</div>
+					{% endfor %}
+				</div>
+				{% if siteConfig.social_links %}
+					<ul class="-m-2 list-inside flex flex-wrap mt-4">
+						{% for social in siteConfig.social_links|filter(social => social.url) %}
+							<li class="flex m-2">
+								<a href="{{ social.url }}" target="_blank" class="group bg-white p-2 rounded-sm">
+									{% partial "blocks/svg-icon/svg-icon" data = {
+										name: social.code,
+										cssClasses: "w-6 h-6 fill-primary transition group-hover:fill-secondary"
+									} %}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+				{% if siteConfig.whatsapp_phone %}
+					{% partial "blocks/button/button" data = {
+						cssClasses: "mt-10",
+						tag: "a",
+						body: "Contact us by Whatsapp",
+						variant: "",
+						color: "",
+						size: "",
+						attributes: {
+							href: "https://wa.me/+"~siteConfig.whatsapp_phone|replace({"+":"","-":""," ":"","(":"",")":""})~"?text=Hello!",
+						}
+					} %}
+				{% endif %}
+			</div>
+			<div class="">
+				<div class="text-xl uppercase font-italic font-secondary text-white mb-4 md:mb-8 md:text-3xl">{{ "Quick links"|_ }}</div>
+				{% if menuFooter|length %}
+					<ul class="flex flex-col items-start">
+						{% for item in menuFooter %}
+							<li class="mb-3">
+								<a href="{{ item.url|link }}" class="mb-2 last:mb-0 text-white transition hover:text-secondary md:mb-0 flex items-center" target="{{ item.external ? "_blank" : "_self" }}">
+									{% partial "blocks/svg-icon/svg-icon" data = {
+										cssClasses: "w-3 h-3 fill-white mr-2 shrink-0",
+										name: "chevron-right"
+									} %}
+									{{ item.title }}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class="bg-neutral-darker">
+		<div class="container py-6">
+			<div class="flex flex-col items-center md:flex-row md:justify-between">
+				<div class="text-white text-center mb-6 md:mb-0">© 2020-{{ 'now'|date('Y') }} {{ siteConfig.copyright }}</div>
+			</div>
+		</div>
+	</div>
+</footer>

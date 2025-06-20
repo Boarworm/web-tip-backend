@@ -1,0 +1,70 @@
+uuid: portfolio-items
+handle: Portfolio\Item
+type: stream
+name: Items
+drafts: true
+
+primaryNavigation:
+    label: Portfolio
+    icon: ph ph-note-pencil
+    order: 960
+
+navigation:
+    icon: octo-icon-pencil
+    order: 100
+
+customMessages:
+    buttonCreate: Create Item
+    
+fields:
+    title:
+        placeholder: Title
+    containers:
+        type: repeater
+        label: Builder
+        span: adaptive
+        itemsExpanded: true
+        prompt: Add container
+        titleFrom: container_name
+        groups:
+            container:
+                name: Container
+                icon: icon-columns
+                useTabs: true
+                fields:
+                    _container:
+                        type: mixin
+                        source: Builder\Container
+    intro_text:
+        label: Intro Text
+        tab: Details
+        type: textarea
+        size: small
+    website:
+        label: Website URL
+        tab: Details
+        type: text
+    skills:
+        label: Skills
+        tab: Details
+        type: taglist
+        options:
+            - October CMS
+            - Tailwind
+            - PHP
+            - HTML
+            - JavaScript
+            - CSS
+            - Responsive Design
+            - Front-end Development
+            - Back-end Development
+            - Landing Page
+    image:
+        label: Image
+        tab: Media
+        type: fileupload
+        mode: image
+        maxFiles: 1
+    _meta:
+        type: mixin
+        source: Site\Mixins\Meta

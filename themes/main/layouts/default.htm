@@ -1,0 +1,42 @@
+description = "Default layout"
+
+[global siteConfig]
+handle = "Site\Config"
+==
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+{% partial "layout/head/head" %}
+<body class="flex flex-col min-h-screen text-neutral-darker font-light text-sm sm:text-base">
+{{ this.environment == 'prod' ? siteConfig.code_body_start|raw }}
+
+{% partial "layout/header/header" data = {
+	cssClasses: "fixed",
+	attributes: {}
+} %}
+
+{% partial "layout/menu-mobile/menu-mobile" data = {
+	cssClasses: "js-menu-mobile fixed overflow-y-auto transition-all -right-full top-0 w-full h-full z-40",
+	maxLevel: 10,
+} %}
+
+<div class="text-neutral-darker flex flex-col grow shrink-0 basis-auto">
+	{% page %}
+</div>
+
+{% partial "layout/footer/footer" data = {
+	cssClasses: "",
+	attributes: {}
+} %}
+
+<div class="js-loader fixed left-0 top-0 w-full h-full opacity-0 -z-10 m-auto inset-0 bg-black/60 flex items-center justify-center p-10">
+	{% partial "blocks/loader/loader" data = {
+		cssClasses: "w-full max-w-[200px]"
+	} %}
+</div>
+
+{% framework extras %}
+<script src="{{ 'assets/dist/js/app.js'|theme }}"></script>
+{% scripts %}
+{{ this.environment == 'prod' ? siteConfig.code_body_end|raw }}
+</body>
+</html>

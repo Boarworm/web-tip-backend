@@ -1,0 +1,99 @@
+uuid: site_config
+handle: Site\Config
+type: global
+name: Config
+multisite: true
+
+primaryNavigation:
+    label: Site
+    icon: icon-globe
+    order: 500
+
+navigation:
+    icon: icon-cog
+    parent: Site\Config
+    order: 5
+
+fields:
+    site_name:
+        tab: General
+        label: Site name
+        span: full
+    copyright:
+        tab: Footer
+        label: Copyright
+        span: full
+    footer_text:
+        tab: Footer
+        label: Text
+        span: full
+    phones:
+        tab: Contact
+        label: Phones
+        span: full
+        type: repeater
+        prompt: Add phone
+        form:
+            fields:
+                phone:
+                    label: Number (including country code)
+                    span: full
+    emails:
+        tab: Contact
+        label: Emails
+        span: full
+        type: repeater
+        prompt: Add email
+        form:
+            fields:
+                email:
+                    label: Email
+                    span: full
+    addresses:
+        tab: Contact
+        label: Addresses
+        span: full
+        type: repeater
+        prompt: Add address
+        form:
+            fields:
+                address:
+                    label: Address
+                    span: auto
+                link_direction:
+                    label: Link to direction
+                    span: auto
+    
+    _social_links:
+        type: mixin
+        source: Site\Mixins\SocialLinks
+    
+    env_alert:
+        tab: Template placeholders
+        label: false
+        type: partial
+        path: ~/app/blueprints/main/site/partials/env_alert.htm
+    code_head_start:
+        tab: Template placeholders
+        label: Code after <head>
+        type: codeeditor
+        size: huge
+        span: full
+    code_head_end:
+        tab: Template placeholders
+        label: Code before </head>
+        type: codeeditor
+        size: huge
+        span: full
+    code_body_start:
+        tab: Template placeholders
+        label: Code after <body>
+        type: codeeditor
+        size: huge
+        span: full
+    code_body_end:
+        tab: Template placeholders
+        label: Code before </body>
+        type: codeeditor
+        size: huge
+        span: full

@@ -1,0 +1,33 @@
+uuid: builder_blocks_codehighlighter
+handle: Builder\Blocks\Codehighlighter
+type: mixin
+name: Codehighlighter
+fields:
+    language:
+        label: false
+        tab: Content
+        type: dropdown
+        span: full
+        options:
+            language-php: PHP
+            language-javascript: JavaScript
+            language-html: HTML
+            language-css: CSS
+            language-apache: Apache
+        emptyOption: Language - Auto
+    text:
+        label: false
+        tab: Content
+        type: codeeditor
+        span: full
+        size: large
+    block_name:
+        label: Name
+        tab: Block properties
+        commentAbove: "Block name for organization purposes"
+        type: text
+        span: auto
+        default: Code Highlighter
+    advanced_content:
+        type: mixin
+        source: Builder\Mixins\BlockAdvanced

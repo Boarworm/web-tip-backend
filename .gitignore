@@ -1,0 +1,54 @@
+# Composer ignores
+/vendor
+composer.phar
+
+# Framework ignores
+.env
+.env.*.php
+.env.php
+selenium.php
+/bootstrap/compiled.php
+.phpunit.result.cache
+
+# Hosting ignores
+error_log
+php_errors.log
+php-errors.log
+nginx-error.log
+nginx-access.log
+nginx-ssl.access.log
+nginx-ssl.error.log
+sftp-config.json
+.ftpconfig
+
+# Editor ignores
+nbproject
+.idea
+.vscode/
+_ide_helper.php
+.phpstorm.meta.php
+.DS_Store
+
+# CMS ignores
+storage/cms/blueprint-debug.php
+storage/cms/blueprint*
+storage/cms/manifest.php
+storage/debugbar
+auth.json
+themes/demo
+plugins/flynsarmy/idehelper
+plugins/davask/dump
+plugins/ihorchyshkala/dump
+plugins/october/demo
+plugins/rahman/faker
+.htaccess
+.htpasswd
+robots.txt
+.well-known
+
+# Various
+*.zip
+*.rar
+*.tar.gz
+*.ini
+*.sql

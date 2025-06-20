@@ -1,0 +1,31 @@
+[sitePicker]
+==
+<header data-layout="{{ (_self|split('/')|last|split('.')|first) }}" class="transition-all duration-1000 ease-in-out top-0 w-full z-40 {{ data.cssClasses }}" {% for key, value in data.attributes %}{{ value ? "#{key}=\"#{value}\" "|raw }}{% endfor %}>
+	<div class="">
+		<div class="container py-2 flex items-center justify-between lg:py-4">
+			{% partial "blocks/logo/logo" data = {
+				cssClasses: "shrink-0 w-[36px] lg:mr-4 lg:mr-auto lg:w-[60px]"
+			} %}
+			{% partial "layout/menu-header/menu-header" data = {
+				cssClasses: "hidden md:flex md:ml-auto",
+				maxLevel: 10,
+			} %}
+			<select class="mr-2 ml-auto md:mr-0 md:ml-4 p-1 bg-white rounded-sm" onchange="window.location.assign(this.value)">
+				{% for site in sitePicker.sites %}
+					<option value="{{ site.url }}" {{ this.site.code == site.code ? 'selected' }}>{{ site.code|upper }}</option>
+				{% endfor %}
+			</select>
+			
+			<div class="js-burger js-menu-mobile-trigger w-12 h-10 p-2 md:hidden">
+				{% partial "blocks/burger/burger" data = {
+					cssClasses: "",
+					variant: "",
+					size: "",
+					color: "light",
+					active: "",
+					attributes: {}
+				} %}
+			</div>
+		</div>
+	</div>
+</header>
