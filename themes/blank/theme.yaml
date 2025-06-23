@@ -1,8 +1,8 @@
-name: WTT
-description: WTT theme.
+name: Blank
+description: Blank theme.
 author: Boarworm
 homepage: https://web-tip.top
 authorCode: boarworm
-code: wtt
+code: blank
 parent: ''
 database: 0

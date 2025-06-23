@@ -1,3 +1,0 @@
-<div data-block="{{ (_self|split('/')|last|split('.')|first) }}" class="{{ data.cssClasses }}" {% for key, value in data.attributes %}{{ value ? "#{key}=\"#{value}\""|join(" ")|raw }}{% endfor %}>
-	{{ pager(data.records, { partial: 'blocks/pagination/pager' }) }}
-</div>
