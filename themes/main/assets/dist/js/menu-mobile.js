@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkwtt=self.webpackChunkwtt||[]).push([[825],{2164:(e,t,u)=>{function c(e){var t=document.querySelector(".js-menu-mobile");document.querySelector(".js-burger input");document.querySelectorAll(".js-menu-mobile-trigger").forEach((function(e){e.addEventListener("click",(function(){t.classList.toggle("!left-0")}))}))}u.r(t),u.d(t,{default:()=>c})}}]);
-//# sourceMappingURL=menu-mobile.js.map

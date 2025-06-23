@@ -1,5 +1,0 @@
-<div data-block="{{ (_self|split('/')|last|split('.')|first) }}" class="{{ data.cssClasses }}" {% for key, value in data.attributes %}{{ value ? "#{key}=\"#{value}\" "|raw }}{% endfor %}>
-	<a href="{{ "site/home"|page }}" class="flex items-center">
-		<img src="{{ "assets/images/logo-light.svg"|theme }}" alt="{{ siteConfig.site_name }}" title="{{ siteConfig.site_name }}" class="w-full">
-		<span class="relative text-white leading-none font-extralight text-3xl ml-3 lg:text-5xl">WTT</span> </a>
-</div>
