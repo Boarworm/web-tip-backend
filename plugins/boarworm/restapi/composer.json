@@ -1,0 +1,9 @@
+{
+	"name": "boarworm/wtt-restapi-plugin",
+	"type": "october-plugin",
+	"description": "RestApi plugin for WTT website",
+	"require": {
+		"composer/installers": "~1.0",
+		"fruitcake/laravel-cors": "^3.0"
+	}
+}
