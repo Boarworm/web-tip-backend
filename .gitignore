@@ -9,6 +9,7 @@ composer.phar
 selenium.php
 /bootstrap/compiled.php
 .phpunit.result.cache
+node_modules
 
 # Hosting ignores
 error_log
